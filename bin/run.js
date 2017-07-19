@@ -12,7 +12,7 @@ const slackLogLevel = 'verbose';
 const rtm = slackClient.init(slackToken, slackLogLevel);
 rtm.start();
 
-app.listen(3001);
+slackClient.addAuthenticatedHandler(rtm, () => app.listen(3001) )
 
 app.on('listening', () => {
 	console.log(`slackBot is listening on ${app.address().port} in ${server.get('env')} mode`)

@@ -16,3 +16,5 @@ module.exports.init = function slackClient(token, logLevel) {
 	addAuthenticatedHandler(rtm, handleOnAuthenticated)
 	return rtm;
 }
+
+module.exports.addAuthenticatedHandler = addAuthenticatedHandler;
