@@ -1,9 +1,17 @@
 'use strict';
 
+const slackClient = require('../server/slackClient');
 const server = require('../server/server');
 const http   = require('http');
 
 const app = http.createServer(server);
+
+const slackToken = process.env.SLACK_API_TOKEN;
+const slackLogLevel = 'debug';
+
+const rtm = slackClient.init(slackToken, slackLogLevel);
+rtm.start();
+
 app.listen(3001);
 
 app.on('listening', () => {
